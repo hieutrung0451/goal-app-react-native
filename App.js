@@ -9,6 +9,8 @@ export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseGoals, setCourseGoals] = useState([]);
 
+  console.log(courseGoals);
+
   function startAddGoalHandler() {
     setModalIsVisible(true);
   }
@@ -18,6 +20,10 @@ export default function App() {
   }
 
   function addGoalHandler(enteredGoalText) {
+    if (enteredGoalText.length === 0) {
+      return;
+    }
+
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
       { text: enteredGoalText, id: Math.random().toString() },
